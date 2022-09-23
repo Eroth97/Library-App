@@ -1,0 +1,11 @@
+#library{
+  display: flex;
+  gap: 1rem;
+}
+
+.book{
+  border: 3px solid black;
+  width: 10rem;
+  height: 10rem;
+  padding: 1rem;
+}
