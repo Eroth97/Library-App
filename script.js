@@ -18,6 +18,20 @@ function addBookToLibrary(book){
 
 let library = document.getElementById('library');
 
+// With this chunk of code, we make it possible for the form that creates books,
+// to appear and disappear
+let bookMaker = document.getElementById('book-maker');
+let formBookMaker = document.getElementById('form-book-maker');
+let submitButton = document.getElementById('submit-button');
+
+window.addEventListener('load', () => formBookMaker.style.display='none');
+
+bookMaker.addEventListener('click', () => formBookMaker.style.display = 'block');
+
+submitButton.addEventListener('click', () => formBookMaker.style.display = 'none');
+
+
+//This chunk of code prints all the books on screen.
 window.addEventListener('load', () =>{
   myLibrary.forEach((element) =>{
     let newBook = document.createElement('div');
