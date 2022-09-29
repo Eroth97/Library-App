@@ -28,6 +28,10 @@ let formBookMaker = document.getElementById('form-book-maker');
 let submitButton = document.getElementById('submit-button');
 
 //Functions
+function capitalizeFirstWord(word){
+  return word[0].toUpperCase() + word.slice(1);
+}
+
 function addBookToLibrary(book){
   myLibrary.push(book);
 };
@@ -38,11 +42,12 @@ function displayBooks(){
     bookCard.classList.add('book');
     for (key in element){
       let prop = document.createElement('p');
+      let newKey = capitalizeFirstWord(key).bold();
       if (key === 'read'){
-        let bookReadStatus = element[key] === false? 'Not read': 'Read';
-        prop.textContent = `${key}: ${bookReadStatus}`;
+        let bookReadStatus = element[key] === false? 'No': 'Yes';
+        prop.textContent = `${capitalizeFirstWord(key)}:  ${bookReadStatus}`;
       }
-      else prop.textContent = `${key}: ${element[key]}`;
+      else prop.textContent = `${capitalizeFirstWord(key)}:  ${element[key]}`;
       
       bookCard.appendChild(prop);
     }

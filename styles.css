@@ -1,4 +1,5 @@
 body{
+  font-family: 'Cormorant Garamond', serif;
   margin: 0;
   height: 100vh;
   display: grid;
@@ -13,7 +14,8 @@ body{
 }
 
 #library{
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
   gap: 1rem;
 }
 
@@ -40,7 +42,16 @@ form p{
 
 .book{
   border: 3px solid black;
-  width: 10rem;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  width: 12rem;
   height: 10rem;
   padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.book p {
+  margin: 4px;
+  text-align: center;
 }
