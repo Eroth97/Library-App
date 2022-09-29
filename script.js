@@ -12,17 +12,61 @@ function Book(title, author, numberPages, read){
 //   return this.read === true? returnS + 'read.': returnS + 'not read yet.';
 // }
 
-function addBookToLibrary(book){
-  myLibrary.push(book);
-}
+//Variables
+let author = document.getElementById('author');
+let title = document.getElementById('title');
+let numberPages = document.getElementById('number-pages');
+let yes = document.getElementById('yes');
+let no = document.getElementById('no');
+
+let textInputs = document.querySelectorAll('.options');
+let buttonInputs = document.querySelectorAll('.buttons-options')
 
 let library = document.getElementById('library');
-
-// With this chunk of code, we make it possible for the form that creates books,
-// to appear and disappear
 let bookMaker = document.getElementById('book-maker');
 let formBookMaker = document.getElementById('form-book-maker');
 let submitButton = document.getElementById('submit-button');
+
+//Functions
+function addBookToLibrary(book){
+  myLibrary.push(book);
+};
+
+function displayBooks(){
+  myLibrary.forEach((element) =>{
+    let bookCard = document.createElement('div');
+    bookCard.classList.add('book');
+    for (key in element){
+      let prop = document.createElement('p');
+      if (key === 'read'){
+        let bookReadStatus = element[key] === false? 'Not read': 'Read';
+        prop.textContent = `${key}: ${bookReadStatus}`;
+      }
+      else prop.textContent = `${key}: ${element[key]}`;
+      
+      bookCard.appendChild(prop);
+    }
+    library.appendChild(bookCard);
+  })
+};
+
+function eraseBooks(){
+  let bookCards = document.querySelectorAll('.book');
+  console.log(bookCards);
+  bookCards.forEach(element => library.removeChild(element));
+}
+
+function cleanForm(){
+  textInputs.forEach(element => element.value = '');
+  buttonInputs.forEach(element => element.checked = false);
+}
+
+//This chunk of code prints all the books on screen.
+window.addEventListener('load', () => displayBooks());
+
+
+// With this chunk of code, we make it possible for the form that creates books,
+// to appear and disappear at will.
 
 window.addEventListener('load', () => formBookMaker.style.display='none');
 
@@ -31,16 +75,16 @@ bookMaker.addEventListener('click', () => formBookMaker.style.display = 'block')
 submitButton.addEventListener('click', () => formBookMaker.style.display = 'none');
 
 
-//This chunk of code prints all the books on screen.
-window.addEventListener('load', () =>{
-  myLibrary.forEach((element) =>{
-    let newBook = document.createElement('div');
-    newBook.classList.add('book');
-    for (key in element){
-      let prop = document.createElement('p');
-      prop.textContent = `${key}: ${element[key]}`;
-      newBook.appendChild(prop);
-    }
-    library.appendChild(newBook);
-  })
-});
+//This chunk of code creates a book, using the form provided in the form.
+submitButton.addEventListener('click', () =>{
+  let readStatus = yes.checked === true? true: false;
+
+  let newBook = new Book(title.value, author.value, numberPages.value, readStatus);
+  
+  addBookToLibrary(newBook);
+  eraseBooks();
+  displayBooks();
+  cleanForm();
+})
+
+
