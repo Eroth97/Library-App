@@ -13,23 +13,27 @@
 </head>
 <body>
   <header id="head"><h1>Library App</h1></header>
-  <div>
-    <div class="button"><button id="book-maker">Add book</button></div>
-    <form id="form-book-maker">
-      <ol>
-        <li><label for="author">Author </label><input class="options" id="author" type="text"></li>
-        <li><label for="title">Title </label><input class="options" id="title" type="text"></li>
-        <li><label for="number-pages">Number of Pages </label><input class="options" id="number-pages" type="num"></li>
-        <li>
-          <p>Have you read it?</p>
-          <label for="yes">Yes</label><input name="read-buttons" class="buttons-options" id="yes" type="radio">
-          <label for="no">No</label><input name="read-buttons" class="buttons-options" id="no" type="radio">
-        </li>  
-        <li><button id ="submit-button" type="button">New Book</li>
-      </ol>
-    </form>
+  <div id="sidebar">
+    <div id="my-id">Here will go my info
+      <div class="line"></div>
+    </div>
+    <div class="form">
+      <button id="book-maker">Add book</button>
+      <form id="form-book-maker">
+        <ol>
+          <li class="label-input"><label for="author">Author </label><input class="options" id="author" type="text"></li>
+          <li class="label-input"><label for="title">Title </label><input class="options" id="title" type="text"></li>
+          <li class="label-input"><label for="number-pages">Number of Pages </label><input class="options" id="number-pages" type="num"></li>
+          <li>
+            <p>Have you read it?</p>
+            <label for="yes">Yes</label><input name="read-buttons" class="buttons-options" id="yes" type="radio">
+            <label for="no">No</label><input name="read-buttons" class="buttons-options" id="no" type="radio">
+          </li>  
+          <li><button id ="submit-button" type="button">New Book</li>
+        </ol>
+      </form>
+    </div>
   </div>
   <div id="library"></div>
-  <footer id="foot">Made by David Tellez</footer>
 </body>
 </html>

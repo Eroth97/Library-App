@@ -1,27 +1,30 @@
+:root{
+  --white-font: whitesmoke;
+  --lightest-gray: #adb5bd;
+  --darkest-gray: #212529;
+}
+
 body{
   font-family: 'Cormorant Garamond', serif;
   margin: 0;
   height: 100vh;
   display: grid;
+  gap: 1rem;
   grid-template-columns: 1fr 3fr;
-  grid-template-rows: 1fr 4fr 1fr;
+  grid-template-rows: 1fr 4fr;
 }
 
+/* Header */
 
-#head, #foot{
-  grid-column: 1/-1;
-  text-align: center;
+#head{
+  grid-column: 2/-1;
 }
+
 
 #library{
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
   gap: 1rem;
-}
-
-.button{
-  text-align: center;
-  padding: 2rem;
 }
 
 form{
@@ -30,6 +33,8 @@ form{
 
 ol{
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 li{
@@ -54,4 +59,61 @@ form p{
 .book p {
   margin: 4px;
   text-align: center;
+}
+
+/* Sidebar */
+#sidebar{
+  grid-row: 1/-1;
+  display: grid;
+  background-color: var(--darkest-gray);
+  color: var(--white-font);
+}
+
+.form{
+  text-align: center;
+  padding: 2rem;
+}
+
+#sidebar button{
+  border-radius: 4px;
+  padding: 0.5rem;
+  background-color: var(--lightest-gray);
+  color: var(--darkest-gray);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+}
+
+.label-input{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.label-input label{
+  margin-bottom: 0.2rem;
+}
+
+li + li{
+  margin-top: 1rem;
+}
+
+li label, li p{
+  font-weight: 900;
+  font-size: 1.1rem;
+}
+
+#sidebar input{
+  border-radius: 8px;
+}
+
+input + label{
+  margin-left: 1rem;
+}
+
+/* Some extra CSS */
+
+.line{
+  border-top: 1px solid white;
+  width: 16rem;
+  grid-column: 1/-1;
 }

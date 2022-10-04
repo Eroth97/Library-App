@@ -80,6 +80,15 @@ bookMaker.addEventListener('click', () => formBookMaker.style.display = 'block')
 submitButton.addEventListener('click', () => formBookMaker.style.display = 'none');
 
 
+
+//With this chunk of code the book maker button disappears when clicked, and appear when a
+//new book is created.
+bookMaker.addEventListener('click', () => bookMaker.style.display='none');
+
+submitButton.addEventListener('click', () => bookMaker.style.display = '');
+
+
+
 //This chunk of code creates a book, using the form provided in the form.
 submitButton.addEventListener('click', () =>{
   let readStatus = yes.checked === true? true: false;
