@@ -114,6 +114,6 @@ input + label{
 
 .line{
   border-top: 1px solid white;
-  width: 16rem;
+  width: 90%;
   grid-column: 1/-1;
 }

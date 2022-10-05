@@ -13,6 +13,8 @@ function Book(title, author, numberPages, read){
 // }
 
 //Variables
+let numberOfBooks = 0;
+
 let author = document.getElementById('author');
 let title = document.getElementById('title');
 let numberPages = document.getElementById('number-pages');
@@ -38,11 +40,17 @@ function addBookToLibrary(book){
 
 function displayBooks(){
   myLibrary.forEach((element) =>{
+    numberOfBooks++;
     let bookCard = document.createElement('div');
+
+    bookCard.setAttribute('id', `book ${numberOfBooks}`);
+
+    let eraseButton = createEraseButton(numberOfBooks);
+    let readButton = createReadButton();
+
     bookCard.classList.add('book');
     for (key in element){
       let prop = document.createElement('p');
-      let newKey = capitalizeFirstWord(key).bold();
       if (key === 'read'){
         let bookReadStatus = element[key] === false? 'No': 'Yes';
         prop.textContent = `${capitalizeFirstWord(key)}:  ${bookReadStatus}`;
@@ -50,14 +58,46 @@ function displayBooks(){
       else prop.textContent = `${capitalizeFirstWord(key)}:  ${element[key]}`;
       
       bookCard.appendChild(prop);
+      bookCard.appendChild(eraseButton);
+      bookCard.appendChild(readButton);
     }
     library.appendChild(bookCard);
   })
 };
 
+function createEraseButton(num){
+  let button = document.createElement('button');
+  button.textContent = 'Erase';
+  button.setAttribute('id', `erase-book-${num}`);
+  button.addEventListener('click', () => {
+    //This will be one function
+    let bookCard = document.getElementById(`book ${num}`);
+    library.removeChild(bookCard);
+    num === myLibrary.length? myLibrary = myLibrary.slice(0, num-1): 
+                              myLibrary = myLibrary.slice(0, num).concat(myLibrary.slice(num + 1));
+    console.log(myLibrary);
+
+    //This will be other function.
+    numberOfBooks = 0;
+    let books = document.querySelectorAll('.book');
+    books.forEach((book) => {
+      numberOfBooks++;
+      book.setAttribute('id', `book ${numberOfBooks}`);
+    })
+
+  });
+  return button;
+}
+
+function createReadButton(){
+  let button = document.createElement('button');
+  button.textContent = 'Now Read';
+  return button;
+}
+
 function eraseBooks(){
+  numberOfBooks = 0;
   let bookCards = document.querySelectorAll('.book');
-  console.log(bookCards);
   bookCards.forEach(element => library.removeChild(element));
 }
 
@@ -100,5 +140,3 @@ submitButton.addEventListener('click', () =>{
   displayBooks();
   cleanForm();
 })
-
-
