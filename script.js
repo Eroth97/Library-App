@@ -28,12 +28,6 @@ let library = document.getElementById('library');
 let formBookMaker = document.getElementById('form-book-maker');
 let submitButton = document.getElementById('submit-button');
 
-//Non native Functions
-function capitalizeFirstWord(word){
-  return word[0].toUpperCase() + word.slice(1);
-}
-
-
 
 //This chunk of code prints all the books on screen.
 window.addEventListener('load', () => displayBooks());
@@ -134,5 +128,19 @@ function createReadButton(num){
   let button = document.createElement('button');
   button.textContent = 'Now Read';
   myLibrary[num - 1].read === false? button.disabled = false: button.disabled = true; 
+  button.addEventListener('click', () => {
+    myLibrary[num - 1].read = true;
+    button.disabled = true;
+    
+    let bookCard = document.getElementById(`book ${num}`);
+    bookCard.children[3].textContent = 'Read: Yes';
+  });
   return button;
 }
+
+
+//Non native Functions
+function capitalizeFirstWord(word){
+  return word[0].toUpperCase() + word.slice(1);
+}
+
