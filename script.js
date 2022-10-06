@@ -25,7 +25,6 @@ let textInputs = document.querySelectorAll('.options');
 let buttonInputs = document.querySelectorAll('.buttons-options')
 
 let library = document.getElementById('library');
-let bookMaker = document.getElementById('book-maker');
 let formBookMaker = document.getElementById('form-book-maker');
 let submitButton = document.getElementById('submit-button');
 
@@ -38,25 +37,6 @@ function capitalizeFirstWord(word){
 
 //This chunk of code prints all the books on screen.
 window.addEventListener('load', () => displayBooks());
-
-
-// With this chunk of code, we make it possible for the form that creates books,
-// to appear and disappear at will.
-
-window.addEventListener('load', () => formBookMaker.style.display='none');
-
-bookMaker.addEventListener('click', () => formBookMaker.style.display = 'block');
-
-submitButton.addEventListener('click', () => formBookMaker.style.display = 'none');
-
-
-
-//With this chunk of code the book maker button disappears when clicked, and appear when a
-//new book is created.
-bookMaker.addEventListener('click', () => bookMaker.style.display='none');
-
-submitButton.addEventListener('click', () => bookMaker.style.display = '');
-
 
 
 //This chunk of code creates a book, using the information provided by the user.
