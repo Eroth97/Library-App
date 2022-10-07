@@ -1,7 +1,11 @@
 :root{
   --white-font: whitesmoke;
   --lightest-gray: #adb5bd;
+  --medium--gray: #495057;
   --darkest-gray: #212529;
+  --disabled-button-color: #343a40;
+  --red: #dc3545;
+  --green: #198754;
 }
 
 body{
@@ -9,7 +13,6 @@ body{
   margin: 0;
   height: 100vh;
   display: grid;
-  gap: 1rem;
   grid-template-columns: 1fr 3fr;
   grid-template-rows: 1fr 4fr;
 }
@@ -18,6 +21,9 @@ body{
 
 #head{
   grid-column: 2/-1;
+  padding: 0.5rem;
+  background-color: var(--medium--gray);
+  color: var(--white-font);
 }
 
 
@@ -43,22 +49,6 @@ li{
 
 form p{
   margin-bottom: 4px;
-}
-
-.book{
-  border: 3px solid black;
-  font-size: 1.2rem;
-  border-radius: 8px;
-  width: 12rem;
-  height: 10rem;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-}
-
-.book p {
-  margin: 4px;
-  text-align: center;
 }
 
 /* Sidebar */
@@ -108,6 +98,74 @@ li label, li p{
 
 input + label{
   margin-left: 1rem;
+}
+
+/* Library */
+
+#library{
+  padding: 1rem;
+  background-color: var(--lightest-gray);
+}
+
+.book{
+  border: 3px solid black;
+  background-color: var(--medium--gray);
+  color: var(--white-font);
+  font-size: 1.2rem;
+  border-radius: 8px;
+  width: 12rem;
+  height: 11rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.book p {
+  margin: 4px;
+  text-align: center;
+}
+
+.buttons{
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.buttons button{
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  background-color: var(--lightest-gray);
+  border: 1px solid var(--darkest-gray);
+  color: var(--darkest-gray);
+  border-radius: 8px;
+  padding: 0.5rem;
+}
+
+button:hover{
+  transform: scale(1.15);
+  color: var(--white-font);
+  border: 1px solid var(--lightest-gray);
+}
+
+.read-button:hover{  
+  background-color: var(--green);
+}
+
+.erase-button:hover{
+  background-color: var(--red);
+}
+
+button:disabled{
+  background-color: var(--disabled-button-color) ;
+  color: var(--white-font);
+  border: 1px solid var(--darkest-gray);
+}
+
+button:disabled:hover{
+  transform: scale(1);
+  background-color: var(--disabled-button-color) ;
+  color: var(--white-font);
+  border: 1px solid var(--darkest-gray);
 }
 
 /* Some extra CSS */

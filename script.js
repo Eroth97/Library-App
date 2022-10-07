@@ -64,8 +64,10 @@ function displayBooks(){
 
     bookCard.setAttribute('id', `book ${numberOfBooks}`);
 
-    let eraseButton = createEraseButton(numberOfBooks);
-    let readButton = createReadButton(numberOfBooks);
+    // let eraseButton = createEraseButton(numberOfBooks);
+    // let readButton = createReadButton(numberOfBooks);
+
+    let buttonsDiv = createButtonsDiv(numberOfBooks);
 
     bookCard.classList.add('book');
     for (key in element){
@@ -77,8 +79,13 @@ function displayBooks(){
       else prop.textContent = `${capitalizeFirstWord(key)}:  ${element[key]}`;
       
       bookCard.appendChild(prop);
-      bookCard.appendChild(eraseButton);
-      bookCard.appendChild(readButton);
+      // let buttonsDiv = document.createElement('div');
+      // buttonsDiv.setAttribute('class', 'buttons');
+
+      // buttonsDiv.appendChild(eraseButton);
+      // buttonsDiv.appendChild(readButton);
+
+      bookCard.appendChild(buttonsDiv);
     }
     library.appendChild(bookCard);
   })
@@ -92,10 +99,26 @@ function cleanForm(){
 
 //Functionality behind display Books function.
 
+//Functionality behind buttons div. 
+
+function createButtonsDiv(num){
+  let buttonsDiv = document.createElement('div');
+  buttonsDiv.setAttribute('class', 'buttons');
+
+  let eraseButton = createEraseButton(num);
+  let readButton = createReadButton(num);
+  
+  buttonsDiv.appendChild(eraseButton);
+  buttonsDiv.appendChild(readButton);
+
+  return buttonsDiv;
+}
+
 //Functionality Erase Buttons
 function createEraseButton(num){
   let button = document.createElement('button');
   button.textContent = 'Erase';
+  button.setAttribute('class', 'erase-button');
   button.setAttribute('id', `erase-book-${num}`);
   button.addEventListener('click', () => {
     updateLibrary(num);
@@ -118,7 +141,7 @@ function updateBookCardsIDs(){
     numberOfBooks++;
     book.setAttribute('id', `book ${numberOfBooks}`);
 
-    let button = book.children[4];
+    let button = book.children[4].children[0];
     button.setAttribute('id', `erase-book-${numberOfBooks}`);
     })
 }
@@ -127,6 +150,7 @@ function updateBookCardsIDs(){
 function createReadButton(num){
   let button = document.createElement('button');
   button.textContent = 'Now Read';
+  button.setAttribute('class', 'read-button');
   myLibrary[num - 1].read === false? button.disabled = false: button.disabled = true; 
   button.addEventListener('click', () => {
     myLibrary[num - 1].read = true;
