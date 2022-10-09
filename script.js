@@ -1,4 +1,4 @@
-let myLibrary = [new Book('book1', 'J.R.R.Tolkien', 100, true), new Book('book2', 'J.R.R.Tolkien', 100, false), new Book('book3', 'J.R.R.Tolkien', 100, false)];
+let myLibrary = [];
 
 function Book(title, author, numberPages, read){
   this.title = title;
@@ -6,11 +6,6 @@ function Book(title, author, numberPages, read){
   this.pages = numberPages;
   this.read = read;
 }
-
-// Book.prototype.info = function(){
-//   let returnS = `${this.title} by ${this.author}, ${this.pages} pages, `;
-//   return this.read === true? returnS + 'read.': returnS + 'not read yet.';
-// }
 
 //Variables
 let numberOfBooks = 0;
@@ -91,9 +86,6 @@ function displayBooks(){
 
     bookCard.setAttribute('id', `book ${numberOfBooks}`);
 
-    // let eraseButton = createEraseButton(numberOfBooks);
-    // let readButton = createReadButton(numberOfBooks);
-
     let buttonsDiv = createButtonsDiv(numberOfBooks);
 
     bookCard.classList.add('book');
@@ -106,12 +98,6 @@ function displayBooks(){
       else prop.textContent = `${capitalizeFirstWord(key)}:  ${element[key]}`;
       
       bookCard.appendChild(prop);
-      // let buttonsDiv = document.createElement('div');
-      // buttonsDiv.setAttribute('class', 'buttons');
-
-      // buttonsDiv.appendChild(eraseButton);
-      // buttonsDiv.appendChild(readButton);
-
       bookCard.appendChild(buttonsDiv);
     }
     library.appendChild(bookCard);
