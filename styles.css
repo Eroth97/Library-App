@@ -100,6 +100,10 @@ input + label{
   margin-left: 1rem;
 }
 
+p.special-paragraph {
+  margin-top: 0;
+}
+
 /* Library */
 
 #library{

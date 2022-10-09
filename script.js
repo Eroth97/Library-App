@@ -35,15 +35,42 @@ window.addEventListener('load', () => displayBooks());
 
 //This chunk of code creates a book, using the information provided by the user.
 submitButton.addEventListener('click', () =>{
-  let readStatus = yes.checked === true? true: false;
+  if (isValid(author.value, title.value, numberPages.value)){
+    let readStatus = yes.checked === true? true: false;
 
-  let newBook = new Book(title.value, author.value, numberPages.value, readStatus);
+    let newBook = new Book(title.value, author.value, numberPages.value, readStatus);
   
-  addBookToLibrary(newBook);
-  eraseBooks();
-  displayBooks();
-  cleanForm();
+    addBookToLibrary(newBook);
+    eraseBooks();
+    displayBooks();
+    cleanForm();
+  } else{
+    let label_inputs = document.querySelectorAll('.label-input');
+    printInfoEmptyPlaces(label_inputs);
+  }
 })
+
+//This function returns false if the form is incomplete.
+
+function isValid(a, t, numP){
+  return a === ''? false: 
+         t === ''? false:
+         numP === ''? false: true; 
+}
+
+//This function iterates over all form elements and prints the invalid message where needed.
+
+function printInfoEmptyPlaces(iterator){
+  iterator.forEach((element) =>{
+    if (element.children[1].value === ''){
+      let newParagraph = document.createElement('p');
+      newParagraph.textContent = 'This space is needed';
+      newParagraph.setAttribute('style', 'color: var(--red);');
+      newParagraph.setAttribute('class', 'special-paragraph');
+      element.insertBefore(newParagraph, element.children[1]);
+    }
+  }) 
+}
 
 //Functionality behind the pseudo-submission system.
 
